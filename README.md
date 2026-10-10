@@ -157,7 +157,7 @@ PhoenixEye/
 ├── script.js           # chat UI controller
 ├── style.css           # chat UI styling
 ├── phoenix_data.txt    # report log (append-only)
-├── phoenix_ip.txt      # IP log (rotated per hit)
+├── phoenix_ip.txt      # IP log (rotated per hit) -- BUG!!!
 ├── phoenix_saved_ip.txt# archived IP log
 ├── README.md
 └── LICENSE
