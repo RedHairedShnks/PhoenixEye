@@ -1,13 +1,13 @@
 <div align="center">
 
-<img width="468" height="206" alt="image" src="https://github.com/user-attachments/assets/0552c7a8-4b95-4fdc-9a25-ff5343eb97ef" />
+<img width="968" height="206" alt="image" src="https://github.com/user-attachments/assets/0552c7a8-4b95-4fdc-9a25-ff5343eb97ef" />
 
 
 # PhoenixEye
 
 **Intel gathering and GPS coordinate capture.**
 
-Consent-based · Loopback-first · Terminal-live
+Cloudflared ·  · Capturing-live
 
 [![Bash](https://img.shields.io/badge/bash-5.0%2B-4EAA25?style=flat-square&logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
 [![PHP](https://img.shields.io/badge/php-7.4%2B-777BB4?style=flat-square&logo=php&logoColor=white)](https://www.php.net/)
@@ -20,7 +20,7 @@ Consent-based · Loopback-first · Terminal-live
 
 ## Overview
 
-PhoenixEye is a lightweight, single-machine diagnostics utility. It serves a browser page that requests permission-based device information and GPS coordinates, then forwards the collected data to a local PHP endpoint that writes reports to a file. The launcher tails that file live in the terminal where you started the tool.
+PhoenixEye is Simple, single-machine diagnostics utility. It serves a browser page that requests permission-based device information and GPS coordinates, then forwards the collected data to a local PHP endpoint that writes reports to a file. The launcher tails that file live in the terminal where you started the tool.
 
 Built for **authorized lab testing**, red-team education, and personal device audits. The tool does not tunnel externally by default, does not silently collect without consent, and does not persist data beyond what the operator explicitly retains.
 
@@ -59,42 +59,6 @@ Built for **authorized lab testing**, red-team education, and personal device au
 | **Session log** | Append-only `phoenix_data.txt`, plus `phoenix_ip.txt` and `phoenix_saved_ip.txt`. |
 
 ---
-
-## Architecture
-
-```
-      ┌──────────────────────┐
-      │  phoenixeye.sh       │  ← launcher (animated banner, tunnel/loopback, tail)
-      └──────────┬───────────┘
-                 │
-        ┌────────┴────────┐
-        │                 │
-        ▼                 ▼
-  cloudflared         php -S 127.0.0.1
-  (optional)              │
-                          ▼
-                    ┌──────────────┐
-                    │  index.php   │  ← redirects to /index.html
-                    └──────┬───────┘
-                           ▼
-                    ┌──────────────┐       ┌──────────────────┐
-                    │  index.html  │ ────▶ │  payload block   │
-                    │  (generated) │       │  (device + GPS)  │
-                    └──────┬───────┘       └────────┬─────────┘
-                           │                        │
-                           ▼                        ▼
-                    ┌──────────────┐       ┌──────────────────┐
-                    │  ip.php      │       │  webhook.php     │
-                    │  writes ip   │       │  appends report  │
-                    └──────┬───────┘       └────────┬─────────┘
-                           │                        │
-                           ▼                        ▼
-                    phoenix_ip.txt         phoenix_data.txt
-                           │                        │
-                           └──────────┬─────────────┘
-                                      ▼
-                              terminal (tail -f)
-```
 
 ---
 
@@ -196,18 +160,6 @@ All reports are appended to `phoenix_data.txt` in the project directory.
 
 ---
 
-## Configuration
-
-Edit the constants inside `phoenixeye.sh` to change defaults:
-
-| Setting | Where | Default |
-|---|---|---|
-| Loopback port | `php -S 127.0.0.1:8080` | `8080` |
-| Tunnel internal port | `php -S 127.0.0.1:3333` | `3333` |
-| Report file | `phoenix_data.txt` | — |
-| IP file | `phoenix_ip.txt` | — |
-| Saved IP file | `phoenix_saved_ip.txt` | — |
-
 ---
 
 ## Project Layout
@@ -233,16 +185,6 @@ PhoenixEye/
 
 ---
 
-## Data Handling
-
-| File | Content | Retention |
-|---|---|---|
-| `phoenix_data.txt` | Full reports (device + GPS) | Append-only, operator-managed |
-| `phoenix_ip.txt` | Most recent target IP + user agent | Deleted after each detection |
-| `phoenix_saved_ip.txt` | Archive of every captured IP | Append-only |
-
-No data leaves the host unless Cloudflared is used (which only relays the HTTP traffic between the target's browser and the local PHP server). No analytics, no telemetry, no third-party beacons beyond the Google Maps / Google Earth links embedded in the report itself (which the operator views manually, not the target).
-
 ---
 
 ## Security Notes
@@ -253,21 +195,10 @@ No data leaves the host unless Cloudflared is used (which only relays the HTTP t
 - **No persistence of location beyond the log file.** Delete `phoenix_data.txt` to wipe coordinates.
 - **Tunnel exposure.** If you choose Option 1, the `trycloudflare.com` URL is public. Treat it as such — anyone with the link can reach the served page for as long as the tunnel is running.
 - **Authorized use only.** Running this tool against devices or networks you do not own or have written permission to test may violate computer-fraud laws in your jurisdiction. The author of this repository does not condone or support unauthorized use.
+- **No data leaves the host unless Cloudflared is used (which only relays the HTTP traffic between the target's browser and the local PHP server). No analytics, no telemetry, no third-party beacons beyond the Google Maps / Google Earth links embedded in the report itself (which the operator views manually, not the target).
 
 ---
 
-## Troubleshooting
-
-| Symptom | Cause | Fix |
-|---|---|---|
-| `php required` on start | `php` not in `PATH` | Install PHP CLI: `apt install php-cli` / `brew install php` |
-| `wget required` on tunnel | `wget` not installed | `apt install wget` / `brew install wget` |
-| `Direct link is not generating` | Cloudflared failed to open a tunnel | Check internet access, firewall, and `cf.log` |
-| `port 8080 in use` | Another process is bound to 8080 | `lsof -i :8080` then kill the PID, or change the port in `phoenixeye.sh` |
-| Terminal shows `\e[1;31m` literally | Terminal lacks ANSI support | Use `xterm-256color`, Windows Terminal, or a modern terminal emulator |
-| `^C` still shows on interrupt | `stty` unavailable in your environment | Add `printf '\033[?25h'` after `stty -echoctl` — cursor restore fallback |
-| GPS missing from log | Payload not regenerated, or `<body>` missing the trigger | `rm -f index.html` and restart; payload calls `gpsLocation()` at the end |
-| Duplicate report blocks | Two XHRs per page load | Expected in the original payload — device info + GPS |
 
 ---
 
@@ -310,7 +241,7 @@ Released under the MIT License. See [`LICENSE`](LICENSE) for the full text.
 **PhoenixEye** — 
 
 ```
-authorized access · consent-based · loopback-first
+authorized access · consent-based ·
 ```
 
 </div>
