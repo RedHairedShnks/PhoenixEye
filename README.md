@@ -24,26 +24,6 @@ PhoenixEye is Simple, single-machine diagnostics utility. It serves a browser pa
 
 Built for **authorized lab testing**, red-team education, and personal device audits. The tool does not tunnel externally by default, does not silently collect without consent, and does not persist data beyond what the operator explicitly retains.
 
----
-
-## Table of Contents
-
-- [Features](#features)
-- [Architecture](#architecture)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Terminal Output](#terminal-output)
-- [Configuration](#configuration)
-- [Project Layout](#project-layout)
-- [Data Handling](#data-handling)
-- [Security Notes](#security-notes)
-- [Troubleshooting](#troubleshooting)
-- [FAQ](#faq)
-- [License](#license)
-- [Credits](#credits)
-
----
 
 ## Features
 
