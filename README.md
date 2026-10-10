@@ -299,8 +299,9 @@ Released under the MIT License. See [`LICENSE`](LICENSE) for the full text.
 
 ---
 
-## Credits
-- ShnksPHX
+## Contributors
+
+- Tracy "Shnks" G. A
 
 ---
 
