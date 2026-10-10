@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 ShnksPHX
+Copyright (c) 2026 PhoenixEye contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,31 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+NOTICE
+
+PhoenixEye is a local device-diagnostics utility designed for authorized
+security testing, education, and personal device audits. It is intended to
+be run only against devices and networks you own or have explicit written
+permission to test.
+
+The architectural inspiration for this project comes from the open-source
+"Hound" tool by TechChip (https://github.com/techchipnet/hound). No original
+source files from that repository are bundled, modified, or redistributed
+here. All code in this repository was written independently and is released
+under the MIT terms above.
+
+Portions of the chat UI styling are derived from the public "Simple Chat"
+CSS template by Masud Rana, distributed under the MIT License.
+
+The authors of PhoenixEye do not condone, support, or take responsibility
+for any use of this software that violates applicable laws, infringes on
+the privacy of others, or is performed without the informed consent of the
+device owner. Users are solely responsible for ensuring their use complies
+with all applicable local, national, and international regulations.
+
+---
+
+SPDX-License-Identifier: MIT
