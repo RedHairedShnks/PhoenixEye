@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="968" height="206" alt="image" src="https://github.com/user-attachments/assets/0552c7a8-4b95-4fdc-9a25-ff5343eb97ef" />
+<img width="968" height="406" alt="image" src="https://github.com/user-attachments/assets/0552c7a8-4b95-4fdc-9a25-ff5343eb97ef" />
 
 
 # PhoenixEye
