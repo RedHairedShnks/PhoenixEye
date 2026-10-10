@@ -59,7 +59,7 @@ Built for **authorized lab testing**, red-team education, and personal device au
 
 | Module | Description |
 |---|---|
-| **Animated launcher** | Colored dragon-eye banner, spinner, clean menu. |
+| **Animated launcher** | Colored Phoenix-eye banner, spinner, clean menu. |
 | **Cloudflared tunnel** | Optional public link via `trycloudflare.com`. |
 | **Loopback mode** | Serve strictly on `127.0.0.1:8080`. |
 | **Device info** | User agent, platform, cores, RAM, screen, language, cookies, browser name, local time, referrer, OS CPU. |
@@ -67,7 +67,6 @@ Built for **authorized lab testing**, red-team education, and personal device au
 | **Permission-aware** | Explicit grant required. Denied, timeout, and unavailable states are logged. |
 | **Live terminal output** | Report streams to the terminal as soon as it arrives. |
 | **Session log** | Append-only `phoenix_data.txt`, plus `phoenix_ip.txt` and `phoenix_saved_ip.txt`. |
-| **Clean exit** | `stty -echoctl` hides `^C`; trap restores terminal state. |
 
 ---
 
@@ -125,7 +124,7 @@ Supported hosts: Linux (all distros), macOS, WSL, Termux.
 ## Installation
 
 ```bash
-git clone <your-fork> PhoenixEye
+git clone https://github.com/ShnksPHX/PhoenixEye.git
 cd PhoenixEye
 chmod +x phoenixeye.sh
 ```
@@ -329,10 +328,7 @@ Released under the MIT License. See [`LICENSE`](LICENSE) for the full text.
 ---
 
 ## Credits
-
-- Project structure and network flow inspired by **TechChip** (`techchipnet`).
-- Terminal UI, animation, and the PhoenixEye brand are original to this repository.
-- Chat UI CSS derived from the public **Simple Chat** template by **Masud Rana** (MIT).
+- ShnksPHX
 
 ---
 
