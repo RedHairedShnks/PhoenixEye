@@ -1,11 +1,11 @@
 <div align="center">
 
-<img width="440" height="302" alt="image" src="https://github.com/user-attachments/assets/2b99f5d8-a845-41f7-be9c-7224f742f1f3" />
+<img width="468" height="206" alt="image" src="https://github.com/user-attachments/assets/0552c7a8-4b95-4fdc-9a25-ff5343eb97ef" />
 
 
 # PhoenixEye
 
-**Local device diagnostics and GPS coordinate capture.**
+**Intel gathering and GPS coordinate capture.**
 
 Consent-based · Loopback-first · Terminal-live
 
