@@ -1,17 +1,7 @@
 <div align="center">
 
-```
-                              ▄▄████▄▄
-                           ▄███████████▄
-                         ▄███████████████▄
-                        ██████████████████
-                       ████████████████████
-                       ████████████████████
-                        ██████████████████
-                         ▀██████████████▀
-                           ▀██████████▀
-                              ▀▀████▀▀
-```
+<img width="440" height="302" alt="image" src="https://github.com/user-attachments/assets/2b99f5d8-a845-41f7-be9c-7224f742f1f3" />
+
 
 # PhoenixEye
 
@@ -141,26 +131,8 @@ bash phoenixeye.sh
 
 You will see:
 
-```
-                              ▄▄████▄▄
-                           ▄███████████▄
-                         ▄███████████████▄
-                        ██████████████████
-                       ████████████████████
-                       ████████████████████
-                        ██████████████████
-                         ▀██████████████▀
-                           ▀██████████▀
-                              ▀▀████▀▀
+<img width="440" height="302" alt="image" src="https://github.com/user-attachments/assets/2b5f6994-b739-4b06-b0ed-ed84ffcf4119" />
 
-           P H O E N I X E Y E
-         Local Device Diagnostics
-
-  1  Cloudflared Tunnel
-  2  Loopback Address
-
-  »
-```
 
 **Option 1 — Public link via Cloudflare:**
 
@@ -334,7 +306,7 @@ Released under the MIT License. See [`LICENSE`](LICENSE) for the full text.
 
 <div align="center">
 
-**PhoenixEye** — built for authorized testing only.
+**PhoenixEye** — 
 
 ```
 authorized access · consent-based · loopback-first
