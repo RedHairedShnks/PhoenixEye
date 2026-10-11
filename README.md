@@ -152,12 +152,12 @@ PhoenixEye/
 ├── index_chat.html     # page shell (payload injected at runtime)
 ├── index.html          # generated: index_chat.html + payload
 ├── payload             # device + GPS capture script
-├── ip.php              # server-side IP writer
+├── ip.php              # server-side IP writer -- BUG
 ├── webhook.php         # report appender
 ├── script.js           # chat UI controller
 ├── style.css           # chat UI styling
 ├── phoenix_data.txt    # report log (append-only)
-├── phoenix_ip.txt      # IP log (rotated per hit) -- BUG!!!
+├── phoenix_ip.txt      # IP log (rotated per hit)
 ├── phoenix_saved_ip.txt# archived IP log
 ├── README.md
 └── LICENSE
